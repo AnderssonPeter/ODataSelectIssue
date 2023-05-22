@@ -1,0 +1,31 @@
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="ODataIssue.Controllers" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="Product">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" />
+      </EntityType>
+      <EntityType Name="Category">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" />
+        <NavigationProperty Name="Products" Type="Collection(ODataIssue.Controllers.Product)" />
+      </EntityType>
+    </Schema>
+    <Schema Namespace="Default" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="Container">
+        <EntitySet Name="Products" EntityType="ODataIssue.Controllers.Product" />
+        <EntitySet Name="Categories" EntityType="ODataIssue.Controllers.Category">
+          <NavigationPropertyBinding Path="Products" Target="Products" />
+        </EntitySet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
